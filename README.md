@@ -3,7 +3,7 @@
 Personal portfolio website built using React.
 
 ## 🌐 Live Demo
-https://your-vercel-link.vercel.app
+https://umer-badal-portfolio.vercel.app
 
 ## 🛠 Tech Stack
 - React
