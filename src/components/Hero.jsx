@@ -119,7 +119,7 @@ function Hero() {
           </h1>
 
           <p>
-            I build scalable and modern web applications using Django and React.
+            I build scalable and modern web applications using Django, React and WordPress.
             Passionate about writing clean code and solving real-world problems.
           </p>
 
