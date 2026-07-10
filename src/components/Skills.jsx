@@ -1,110 +1,62 @@
-// import React from "react";
-
-// function Skills() {
-//   return (
-//     <section id="skills" className="section">
-//       <h2>Skills</h2>
-//       <div className="skills-grid">
-//         <div>Python</div>
-//         <div>Django</div>
-//         <div>React</div>
-//         <div>JavaScript</div>
-//         <div>HTML</div>
-//         <div>CSS</div>
-//         <div>Bootstrap</div>
-//         <div>Git</div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Skills;
-
-
-// ---------------------------------------------------
-// import React from "react";
-// // import "./Skills.css";
-
-// function Skills() {
-//   return (
-//     <section id="skills" className="skills-section">
-//       <h2>Skills</h2>
-
-//       <div className="skills-grid">
-        
-//         <div className="skill-card">
-//           <img src="/images/icons/python.png" alt="Python" />
-//           <p>Python / Django / Flask</p>
-//         </div>
-
-//         <div className="skill-card">
-//           <img src="/images/icons/react.png" alt="React" />
-//           <p>JavaScript / React</p>
-//         </div>
-
-//         <div className="skill-card">
-//           <img src="/images/icons/bootstrap.png" alt="Bootstrap" />
-//           <p>Bootstrap / CSS</p>
-//         </div>
-
-//         <div className="skill-card">
-//           <img src="/images/icons/git.png" alt="Git" />
-//           <p>Git / GitHub</p>
-//         </div>
-
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Skills;
-// -------------------------------------------------------
-
-
-
-
-
 import React from "react";
+import { motion } from "framer-motion";
 
-
-const skills = [
-  
-  { name: "POSTMAN", icon: "/images/icons/POSTMAN.webp"},
-  { name: "WordPress", icon: "/images/icons/Wordpress.png"},
-  
-  { name: "GitHub", icon: "/images/icons/GitHub.png" },
-  { name: "Git", icon: "/images/icons/git.png" },
-  
-  { name: "SQLite", icon: "/images/icons/SQLite.png"},
-  { name: "MySQL", icon: "/images/icons/MySQL.png"},
-  { name: "PostgreSQL", icon: "/images/icons/PostgreSQL.png"},
-  
-  { name: "RestAPI", icon: "/images/icons/RestAPI.png"},
-  { name: "Django", icon: "/images/icons/django.png" },
-  { name: "Python", icon: "/images/icons/python.png" },
-  
-  { name: "React", icon: "/images/icons/react.png" },
-  { name: "Bootstrap", icon: "/images/icons/bootstrap.png" },
-  { name: "JavaScript", icon: "/images/icons/JavaScript.png" },
-  { name: "CSS3", icon: "/images/icons/CSS.png" },
-  { name: "HTML5", icon: "/images/icons/HTML5.svg" },
+const CATEGORIES = [
+  {
+    title: "Frontend",
+    skills: ["React", "Next.js", "HTML", "CSS", "JavaScript", "Tailwind CSS", "Framer Motion", "GSAP"],
+  },
+  {
+    title: "Backend",
+    skills: ["Python", "Django", "REST APIs", "PostgreSQL", "Supabase", "Database Design"],
+  },
+  {
+    title: "Tools",
+    skills: ["Git", "GitHub", "Vercel", "Figma", "VS Code", "Hostinger"],
+  },
+  {
+    title: "Soft Skills",
+    skills: ["Problem Solving", "Communication", "UI Thinking", "Business Thinking", "Freelancing"],
+  },
 ];
 
 function Skills() {
   return (
-    <section id="skills" className="skills-section">
-      <h2>My Skills</h2>
+    <section id="skills" className="section skills-premium">
+      <span className="section-eyebrow">What I Work With</span>
+      <h2 className="section-title">Skills &amp; Tools</h2>
 
-      <div className="marquee">
-        <div className="marquee-content">
-          {[...skills, ...skills].map((skill, index) => (
-            <div className="skill-card" key={index}>
-              <img src={skill.icon} alt={skill.name} />
-              <p>{skill.name}</p>
+      <motion.div
+        className="skills-cat-grid"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}
+      >
+        {CATEGORIES.map((cat, i) => (
+          <motion.div
+            className="skill-block"
+            key={cat.title}
+            variants={{
+              hidden: { opacity: 0, x: i % 2 === 0 ? -50 : 50 },
+              show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+            }}
+          >
+            <h3>{cat.title}</h3>
+            <div className="skill-chip-row">
+              {cat.skills.map((s) => (
+                <motion.span
+                  className="skill-chip"
+                  key={s}
+                  whileHover={{ scale: 1.08, y: -3 }}
+                >
+                  {s}
+                </motion.span>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }

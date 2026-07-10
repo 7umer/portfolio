@@ -1,188 +1,139 @@
-// import React from "react";
-
-// function Contact() {
-//   return (
-//     <section id="contact" className="section contact-section">
-//       <h2 className="section-title">Contact Me</h2>
-
-//       <div className="contact-card">
-//         <p>
-//           📧 <a href="mailto:umerbadal@gmail.com">Email : umerbadal@gmail.com</a>
-//         </p>
-
-
-//         <p>
-//           📱 <a href="tel:+919035477754">Ph : +91 9035477754</a>
-//         </p>
-
-//         <p>
-//           💼{" "}
-//           <a
-//             href="https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242 "
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Linkedin.com / Mohammed Talha Umer Badal
-//           </a>
-//         </p>
-
-//         <p>
-//           💻{" "}
-//           <a
-//             href="https://github.com/7umer"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Github.com / 7umer
-//           </a>
-//         </p>
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Contact;
-
-
-
-
-
-
-
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, Globe } from "lucide-react";
+import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+
+function FloatingField({ label, type, name, value, onChange, textarea }) {
+  const Tag = textarea ? "textarea" : "input";
+  return (
+    <div className="floating-field">
+      <Tag
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder=" "
+        required
+        rows={textarea ? 5 : undefined}
+      />
+      <label>{label}</label>
+    </div>
+  );
+}
 
 function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState(null);
 
-  // Simple state for form inputs
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  // Handle input change
   const handleChange = (e) => {
-    setFormData({
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    const payload = {
+      access_key: process.env.REACT_APP_WEB3FORMS_KEY,
       ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+    };
 
-  // Handle submit (for now just prevent reload)
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   alert("Message Sent Successfully 🚀");
-  // };
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  const formDataToSend = {
-    access_key: "efeaa93c-8b0d-44d1-ba6c-c6dbbbe9829e", // 👈 PASTE HERE
-    name: formData.name,
-    email: formData.email,
-    message: formData.message,
-  };
-
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formDataToSend),
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
-      alert("Message Sent Successfully 🚀");
-      setFormData({ name: "", email: "", message: "" });
-    } else {
-      alert("Something went wrong ❌");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
     }
-  } catch (error) {
-    alert("Network error ❌");
-  }
-};
-
-
+  };
 
   return (
-    <section id="contact" className="section contact-section">
-      <h2 className="section-title">Contact Me</h2>
+    <section id="contact" className="section contact-premium">
+      <span className="section-eyebrow">Get In Touch</span>
+      <h2 className="section-title">Let's Build Something Amazing Together</h2>
 
-      <div className="contact-card">
+      <div className="contact-card contact-grid">
+        <motion.div
+          className="contact-info-premium"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <a href="mailto:umerbadal@gmail.com" className="contact-link">
+            <Mail size={18} /> umerbadal@gmail.com
+          </a>
+          <a href="tel:+919035477754" className="contact-link">
+            <Phone size={18} /> +91 90354 77754
+          </a>
+          <a
+            href="https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+          >
+            <FaLinkedin size={18} /> LinkedIn
+          </a>
+          <a
+            href="https://github.com/7umer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+          >
+            <FaGithub size={18} /> GitHub
+          </a>
+          <a
+            href="https://www.instagram.com/um_web_solutions"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+          >
+            <FaInstagram size={18} /> Instagram
+          </a>
+          <a
+            href="https://umwebsolutions.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+          >
+            <Globe size={18} /> umwebsolutions.com
+          </a>
+        </motion.div>
 
-        {/* ==== Contact Info ==== */}
-        <div className="contact-info">
-          <p>
-            <a href="mailto:umerbadal@gmail.com">
-              Email : umerbadal@gmail.com
-            </a>
-          </p>
+        <motion.form
+          className="contact-form-premium"
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <FloatingField label="Your Name" type="text" name="name" value={formData.name} onChange={handleChange} />
+          <FloatingField label="Your Email" type="email" name="email" value={formData.email} onChange={handleChange} />
+          <FloatingField label="Your Message" name="message" value={formData.message} onChange={handleChange} textarea />
 
-          <p>
-             <a href="tel:+919035477754">
-              Ph : +91 9035477754
-            </a>
-          </p>
+          <motion.button
+            type="submit"
+            className="btn-gradient"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            disabled={status === "sending"}
+          >
+            {status === "sending" ? "Sending..." : "Send Message"}
+          </motion.button>
 
-          <p>
-            {" "}
-            <a
-              href="https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Linkedin.com / Mohammed Talha Umer Badal
-            </a>
-          </p>
-
-          <p>
-            {" "}
-            <a
-              href="https://github.com/7umer"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github.com / 7umer
-            </a>
-          </p>
-        </div>
-
-        {/* ==== Contact Form ==== */}
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows="5"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-
-          <button type="submit">Send Message</button>
-        </form>
-
+          {status === "success" && <p className="form-status success">Message sent successfully 🚀</p>}
+          {status === "error" && <p className="form-status error">Something went wrong — try again.</p>}
+        </motion.form>
       </div>
     </section>
   );

@@ -1,95 +1,39 @@
-// import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-// function Navbar() {
-//   const [active, setActive] = useState("home");
-
-//   const handleClick = (section) => {
-//     setActive(section);
-//   };
-
-//   return (
-//     <nav className="navbar">
-//       {/* <h2 className="logo">Umer.</h2> */}
-//       <a
-//         href="#home"
-//         className="logo"
-//         onClick={() => handleClick("home")}
-//       >
-//       Umer. 
-//       </a>
-//       <ul>
-//         <li>
-//           <a
-//             href="#about"
-//             className={active === "about" ? "active" : ""}
-//             onClick={() => handleClick("about")}
-//           >
-//             About
-//           </a>
-//         </li>
-
-//         <li>
-//           <a
-//             href="#skills"
-//             className={active === "skills" ? "active" : ""}
-//             onClick={() => handleClick("skills")}
-//           >
-//             Skills
-//           </a>
-//         </li>
-
-//         <li>
-//           <a
-//             href="#projects"
-//             className={active === "projects" ? "active" : ""}
-//             onClick={() => handleClick("projects")}
-//           >
-//             Projects
-//           </a>
-//         </li>
-
-//         <li>
-//           <a
-//             href="#contact"
-//             className={active === "contact" ? "active" : ""}
-//             onClick={() => handleClick("contact")}
-//           >
-//             Contact
-//           </a>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
-// ----------------------------------------
-
-import React, { useState, useEffect } from "react";
+const NAV_ITEMS = ["home", "about", "skills", "services", "projects", "contact"];
 
 function Navbar() {
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const ratios = useRef({});
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section[id]");
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
+          ratios.current[entry.target.id] = entry.isIntersecting
+            ? entry.intersectionRatio
+            : 0;
         });
+
+        // Pick whichever observed section currently has the highest
+        // visible ratio, instead of activating on the first intersection
+        // event we happen to receive (which was locking onto "home").
+        const [topId] = Object.entries(ratios.current).sort(
+          (a, b) => b[1] - a[1]
+        )[0] || [];
+
+        if (topId && ratios.current[topId] > 0) {
+          setActive(topId);
+        }
       },
-      { threshold: 0.6 }
+      { threshold: [0, 0.15, 0.3, 0.5, 0.75, 1] }
     );
 
     sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
+    return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
   return (
@@ -106,12 +50,15 @@ function Navbar() {
       </div>
 
       <ul className={menuOpen ? "nav-links active" : "nav-links"}>
-        {["home", "about", "skills", "projects", "contact"].map((item) => (
+        {NAV_ITEMS.map((item) => (
           <li key={item}>
             <a
               href={`#${item}`}
               className={active === item ? "active" : ""}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setActive(item);
+                setMenuOpen(false);
+              }}
             >
               {item.charAt(0).toUpperCase() + item.slice(1)}
             </a>

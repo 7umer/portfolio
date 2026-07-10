@@ -1,149 +1,155 @@
-// import React from "react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import Typewriter from "typewriter-effect";
+import { ArrowRight, Download, Eye } from "lucide-react";
 
-// function Hero() {
-//   return (
-//     <section className="hero">
-//       <h1>Hi, I'm Mohammed Talha Umer Badal</h1>
-//       <h3>Python + React Full Stack Developer</h3>
-//       <p>I build modern web applications using Django and React.</p>
-//       <a href="#projects" className="btn">View My Work</a>
-//     </section>
-//   );
-// }
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.13, delayChildren: 0.15 } },
+};
 
-// export default Hero;
+const item = {
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
 
+function Hero({ onViewResume }) {
+  const heroRef = useRef(null);
 
-// import React from "react";
+  // Mouse-reactive glow behind the hero content
+  const handleMouseMove = (e) => {
+    const el = heroRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty("--mx", `${x}%`);
+    el.style.setProperty("--my", `${y}%`);
+  };
 
-
-// function Hero() {
-//   return (
-//     <section className="hero">
-//       <div className="overlay"></div>
-
-//       <div className="hero-content">
-//         <h1>Hi, I'm Mohammed Talha Umer Badal</h1>
-//         <h3>Python + React Full Stack Developer</h3>
-//         <p>I build modern web applications using Django and React.</p>
-
-//         <div className="hero-buttons">
-//           <a href="#projects" className="btn-primary">
-//             View My Work
-//           </a>
-//           <a href="#contact" className="btn-secondary">
-//             Hire Me
-//           </a>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Hero;
-
-// ----------------------------------------------
-// import React from "react";
-
-// function Hero() {
-//   return (
-//     <section
-//       id="home"
-//       className="hero"
-//       style={{
-//         backgroundImage: `url(${process.env.PUBLIC_URL}/hero-bg1.jpg)`,
-//         backgroundSize: "cover",
-//         backgroundPosition: "center",
-//       }}
-//     >
-//       <div className="overlay"></div>
-
-//       <div className="hero-content">
-
-//         {/* LEFT SIDE CONTENT */}
-//         <div className="hero-left">
-
-//           {/* Passport Image */}
-//           <div className="hero-image">
-//             <img
-//               src={`${process.env.PUBLIC_URL}/images/umer.jpg`}
-//               alt="Mohammed Talha Umer Badal"
-//             />
-//           </div>
-
-//           {/* Text */}
-//           <div className="hero-text">
-//             <h1>Hi, I'm Mohammed Talha Umer Badal</h1>
-//             <h3>Python + React Full Stack Developer</h3>
-//             <p>I build modern web applications using Django and React.</p>
-//           </div>
-
-//         </div>
-
-//       </div>
-//     </section>
-//   );
-// }
-
-// export default Hero;
-// -----------------------------------
-import React from "react";
-// import Typewriter from "typewriter-effect";
-
-function Hero() {
   return (
     <section
       id="home"
-      className="hero"
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/hero-bg1.jpg)`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="hero-premium"
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
     >
-      {/* Dark Overlay */}
-      <div className="overlay"></div>
-
-      <div className="hero-content">
-
-        {/* LEFT SIDE - TEXT CONTENT */}
-        <div className="hero-text">
-          <h4 className="intro-line">
-            Python + React Full Stack Developer
-          </h4>
-
-          <h1>
-            Hi, I'm <span className="highlight">
-              Mohammed Talha Umer Badal
-            </span>
-          </h1>
-
-          <p>
-            I build scalable and modern web applications using Django, React and WordPress.
-            Passionate about writing clean code and solving real-world problems.
-          </p>
-
-          <div className="hero-buttons">
-            <a href="#projects" className="btn-primary">
-              View Projects
-            </a>
-            <a href="#contact" className="btn-secondary">
-              Contact Me
-            </a>
-          </div>
-        </div>
-
-        {/* RIGHT SIDE - IMAGE */}
-        <div className="hero-image">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/umer.jpg`}
-            alt="Mohammed Talha Umer Badal"
-          />
-        </div>
-
+      <div className="blob-field">
+        <span className="blob blob-1" />
+        <span className="blob blob-2" />
+        <span className="blob blob-3" />
       </div>
+      <div className="hero-mouse-glow" />
 
-      
+      <motion.div
+        className="hero-premium-content"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div variants={item} className="status-badge">
+          <span className="status-dot" />
+          Open for Freelance Work
+        </motion.div>
+
+        <motion.h4 variants={item} className="hero-role">
+          <Typewriter
+            options={{
+              strings: [
+                "Full Stack Developer",
+                "UI/UX Designer",
+                "SaaS Builder",
+                "Frontend Developer",
+                "Backend Developer",
+                "Python Developer",
+                "Founder",
+              ],
+              autoStart: true,
+              loop: true,
+              delay: 45,
+              deleteSpeed: 25,
+            }}
+          />
+        </motion.h4>
+
+        <motion.h1 variants={item} className="hero-headline">
+          Designing Beautiful Experiences.
+          <br />
+          <span className="highlight">Building Powerful Digital Products.</span>
+        </motion.h1>
+
+        <motion.p variants={item} className="hero-sub">
+          I'm Mohammed Talha Umer Badal — I design and build premium websites
+          and SaaS products for startups, clinics, real estate brands and
+          local businesses, as the founder of{" "}
+          <a href="https://umwebsolutions.com" target="_blank" rel="noreferrer">
+            UM Web Solutions
+          </a>
+          .
+        </motion.p>
+
+        <motion.div variants={item} className="hero-cta-row">
+          <motion.button
+            className="btn-gradient hero-cta"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={onViewResume}
+          >
+            <Eye size={16} /> View Resume
+          </motion.button>
+
+          <motion.a
+            href="/resume.pdf"
+            download
+            className="btn-outline hero-cta"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <Download size={16} /> Download Resume
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            className="btn-outline hero-cta"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Hire Me
+          </motion.a>
+
+          <motion.a
+            href="#projects"
+            className="btn-gradient hero-cta"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Let's Build Together <ArrowRight size={16} />
+          </motion.a>
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="hero-floating-image"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+      >
+        <motion.img
+          src={`${process.env.PUBLIC_URL}/images/umer.jpg`}
+          alt="Mohammed Talha Umer Badal"
+          animate={{ y: [0, -16, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
+
+      <motion.div
+        className="scroll-indicator"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        <span />
+      </motion.div>
     </section>
   );
 }
