@@ -2,7 +2,7 @@
 
 Personal portfolio and freelance shopfront. React SPA, deployed on Vercel.
 
-**Live:** https://umer-badal-portfolio.vercel.app
+**Live:** https://umer-badal.vercel.app
 
 > **Updating content?** You almost certainly want **[CONTENT.md](CONTENT.md)** —
 > projects, resume, contact details and copy are all editable without touching

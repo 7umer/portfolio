@@ -13,7 +13,7 @@ backend:
   name: github
   repo: 7umer/portfolio
   branch: main
-  base_url: https://umer-badal-portfolio.vercel.app
+  base_url: https://umer-badal.vercel.app
   auth_endpoint: api/auth
 
 # `npx decap-server` + this flag lets you edit content on localhost without
@@ -22,6 +22,15 @@ local_backend: true
 
 media_folder: public/images/projects
 public_folder: /images/projects
+
+# Force ASCII filenames on anything uploaded here. Without this the CMS keeps
+# the original name verbatim, so a file called
+# "Umer Badal — Developer.pdf" is stored with a literal em dash, which has to
+# be percent-encoded in a URL and fails to load in an <iframe>.
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
 
 publish_mode: simple
 

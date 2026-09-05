@@ -12,7 +12,7 @@ the site automatically in about a minute.
 
 ## Option A — the admin panel (what you'll use day to day)
 
-Go to **https://umer-badal-portfolio.vercel.app/admin/**, log in with GitHub,
+Go to **https://umer-badal.vercel.app/admin/**, log in with GitHub,
 and edit through forms. Add a project, upload a screenshot, swap your resume,
 hit Save. Done.
 
@@ -90,8 +90,8 @@ Go to **https://github.com/settings/developers → OAuth Apps → New OAuth App*
 | Field | Value |
 |---|---|
 | Application name | `Portfolio CMS` |
-| Homepage URL | `https://umer-badal-portfolio.vercel.app` |
-| Authorization callback URL | `https://umer-badal-portfolio.vercel.app/api/callback` |
+| Homepage URL | `https://umer-badal.vercel.app` |
+| Authorization callback URL | `https://umer-badal.vercel.app/api/callback` |
 
 Click **Register application**. Copy the **Client ID**, then click
 **Generate a new client secret** and copy that too. The secret is shown once —

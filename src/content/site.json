@@ -1,8 +1,46 @@
 {
-  "name": "Mohammed Talha Umer Badal",
+  "socials": [
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/7umer"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/um_web_solutions"
+    }
+  ],
   "shortName": "Umer",
   "logo": "Umer.",
+  "name": "Mohammed Talha Umer Badal",
+  "resume": "/resume.pdf",
+  "about": "Hi, I'm Umer — I design beautiful digital experiences and build scalable web applications. As founder of UM Web Solutions, I help startups, clinics, real estate companies and local businesses turn their ideas into premium websites and SaaS products.",
+  "phone": "+91 90354 77754",
+  "roleTags": [
+    "Python Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "UI UX Designer",
+    "Founder",
+    "Freelancer"
+  ],
+  "cta": {
+    "heading": "Have something in mind?",
+    "body": "Tell me what you're building. I reply to every message within a day."
+  },
+  "photo": "/images/umer.webp",
+  "subheadline": "I design and build premium websites and SaaS products for startups, clinics, real estate brands and local businesses — as the founder of UM Web Solutions.",
+  "headline": "Design & development for founders who need it done properly.",
+  "phoneHref": "tel:+919035477754",
   "availability": "Open for freelance work",
+  "email": "umerbadal@gmail.com",
+  "company": {
+    "name": "UM Web Solutions",
+    "url": "https://umwebsolutions.com"
+  },
   "roles": [
     "Full Stack Developer",
     "UI/UX Designer",
@@ -12,38 +50,21 @@
     "Python Developer",
     "Founder"
   ],
-  "headline": "Design & development for founders who need it done properly.",
-  "subheadline": "I design and build premium websites and SaaS products for startups, clinics, real estate brands and local businesses — as the founder of UM Web Solutions.",
-  "photo": "/images/umer.webp",
-  "resume": "/resume.pdf",
-  "email": "umerbadal@gmail.com",
-  "phone": "+91 90354 77754",
-  "phoneHref": "tel:+919035477754",
-  "company": {
-    "name": "UM Web Solutions",
-    "url": "https://umwebsolutions.com"
-  },
-  "socials": [
-    { "label": "LinkedIn", "url": "https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242" },
-    { "label": "GitHub", "url": "https://github.com/7umer" },
-    { "label": "Instagram", "url": "https://www.instagram.com/um_web_solutions" }
-  ],
-  "about": "Hi, I'm Umer — I design beautiful digital experiences and build scalable web applications. As founder of UM Web Solutions, I help startups, clinics, real estate companies and local businesses turn their ideas into premium websites and SaaS products.",
-  "roleTags": [
-    "Python Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "UI UX Designer",
-    "Founder",
-    "Freelancer"
-  ],
   "stats": [
-    { "label": "Projects shipped", "value": 15, "suffix": "+" },
-    { "label": "Happy clients", "value": 10, "suffix": "+" },
-    { "label": "Years freelancing", "value": 2, "suffix": "+" }
-  ],
-  "cta": {
-    "heading": "Have something in mind?",
-    "body": "Tell me what you're building. I reply to every message within a day."
-  }
+    {
+      "label": "Projects shipped",
+      "value": 15,
+      "suffix": "+"
+    },
+    {
+      "label": "Happy clients",
+      "value": 10,
+      "suffix": "+"
+    },
+    {
+      "label": "Years freelancing",
+      "value": 2,
+      "suffix": "+"
+    }
+  ]
 }
