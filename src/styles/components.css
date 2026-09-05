@@ -880,6 +880,15 @@
    TESTIMONIALS
    -------------------------------------------------------------------------- */
 
+/* The testimonials block is centred, heading included, so the quote sits
+   as a single centred unit rather than hanging off the left edge. */
+#testimonials .section-head {
+  max-width: 46ch;
+  margin-inline: auto;
+  align-items: center;
+  text-align: center;
+}
+
 /* --- Carousel: one track, slides move right-to-left one at a time --- */
 
 .carousel {
@@ -902,11 +911,16 @@
 
 .carousel-slide {
   /* Exactly one slide wide, so translating the track by -100% per step
-     advances precisely one quote. */
+     advances precisely one quote. Padding is symmetric (and inside the
+     100% basis, via border-box) so the centred content stays centred. */
   flex: 0 0 100%;
   min-width: 0;
   max-width: 100%;
-  padding-right: clamp(1rem, 4vw, 3rem);
+  padding-inline: clamp(0.5rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .carousel-slide > blockquote {
@@ -916,6 +930,7 @@
 .carousel-controls {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.75rem;
   margin-top: 2.5rem;
   flex-wrap: wrap;
