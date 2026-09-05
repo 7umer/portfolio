@@ -6,7 +6,10 @@
   "tag": "Demo · Healthcare",
   "year": "2025",
   "desc": "Clean, trust-led dental clinic website showcasing services, doctor profiles, appointment booking CTA, and patient testimonials. Ready to white-label.",
-  "stack": ["React", "Tailwind CSS"],
-  "url": "https://demo-dental-web.vercel.app",
+  "stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "url": "https://brightcare-clinic.vercel.app",
   "image": "/images/projects/dental.webp"
 }
