@@ -295,8 +295,16 @@
   position: relative;
   border-radius: var(--r-xl);
   overflow: hidden;
-  height: 100%;
-  min-height: 420px;
+  /* Sized by its own ratio and capped, rather than stretching to whatever
+     height the text column happens to be — stretching made it far taller
+     than it needed to be. Centred so the leftover space is split evenly
+     above and below instead of pooling under it. */
+  align-self: center;
+  /* The ratio + cap makes the box narrower than its column, so pin it to
+     the right edge to stay flush with the container margin. */
+  justify-self: end;
+  aspect-ratio: 3 / 4;
+  max-height: 500px;
   background: var(--bg-sunken);
   border: 1px solid var(--line);
 }
@@ -333,8 +341,7 @@
 
   .hero-portrait {
     max-width: 340px;
-    height: auto;
-    min-height: 0;
+    max-height: none;
     aspect-ratio: 1;
   }
 }
@@ -444,8 +451,9 @@
 .about-photo {
   border-radius: var(--r-lg);
   overflow: hidden;
-  height: 100%;
-  min-height: 420px;
+  align-self: center;
+  aspect-ratio: 3 / 4;
+  max-height: 540px;
   border: 1px solid var(--line);
 }
 
@@ -480,8 +488,7 @@
 
   .about-photo {
     max-width: 320px;
-    height: auto;
-    min-height: 0;
+    max-height: none;
     aspect-ratio: 1;
   }
 }
