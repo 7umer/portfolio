@@ -13,7 +13,6 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 import Loader from "./components/Loader";
-import Cursor from "./components/Cursor";
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
 import CommandPalette from "./components/CommandPalette";
@@ -43,7 +42,6 @@ function App() {
         Skip to content
       </a>
 
-      <Cursor />
       <SmoothScroll />
       <ScrollProgress />
 

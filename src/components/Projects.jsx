@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "../content";
 
@@ -150,20 +150,17 @@ function Projects() {
           aria-labelledby={`tab-${track}`}
           tabIndex={-1}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={track}
-              className="proj-grid"
-              variants={grid}
-              initial="hidden"
-              animate="show"
-              exit={{ opacity: 0, transition: { duration: 0.18 } }}
-            >
-              {visible.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            key={track}
+            className="proj-grid"
+            variants={grid}
+            initial="hidden"
+            animate="show"
+          >
+            {visible.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </motion.div>
 
           {visible.length === 0 && (
             <p className="lead">No projects in this track yet.</p>
