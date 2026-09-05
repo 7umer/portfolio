@@ -227,9 +227,13 @@ h5 {
 }
 
 .display-1 {
-  font-size: clamp(2.6rem, 7.2vw, 5.6rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  /* Smaller and bolder. Size matters beyond typography here: the hero
+     portrait stretches to match this column's height, so an oversized
+     headline was what made the photo so tall. */
+  font-size: clamp(2rem, 4.2vw, 3.3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .display-2 {
@@ -461,7 +465,7 @@ h5 {
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  border-radius: 0;
   transition: border-color 0.4s var(--ease), transform 0.4s var(--ease),
     box-shadow 0.4s var(--ease);
 }
