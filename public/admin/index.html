@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex" />
   <title>Portfolio Content Manager</title>
+
+  <!-- Point at the config by absolute path. Without this the CMS resolves
+       "config.yml" relative to the current URL, so visiting /admin (no
+       trailing slash) asks for /config.yml — which Vercel answers with the
+       portfolio's index.html, and the CMS fails parsing HTML as YAML. -->
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
 </head>
 <body>
   <!-- Decap CMS. Everything it saves is a normal git commit to this repo,
