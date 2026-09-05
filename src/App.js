@@ -20,6 +20,7 @@ import ResumeModal from "./components/ResumeModal";
 import BackToTop from "./components/BackToTop";
 
 import useTheme from "./hooks/useTheme";
+import { site } from "./content";
 import "./styles/base.css";
 import "./styles/components.css";
 
@@ -30,7 +31,21 @@ function App() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  const openResume = useCallback(() => setResumeOpen(true), []);
+  // Mobile browsers refuse to render a PDF inside an iframe — the preview
+  // modal just shows an empty frame there. On touch/small screens, hand the
+  // file to the browser's own PDF handling instead of previewing it inline.
+  const openResume = useCallback(() => {
+    const cannotPreviewInline =
+      window.matchMedia("(hover: none), (max-width: 900px)").matches ||
+      navigator.pdfViewerEnabled === false;
+
+    if (cannotPreviewInline) {
+      window.open(site.resume, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    setResumeOpen(true);
+  }, []);
   const openSearch = useCallback(() => setSearchOpen(true), []);
   const closeSearch = useCallback(() => setSearchOpen(false), []);
 

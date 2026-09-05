@@ -1325,7 +1325,24 @@
 .modal-head-actions {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.15rem;
+}
+
+.modal-head-actions a,
+.modal-head-actions button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--ink-2);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.modal-head-actions a:hover,
+.modal-head-actions button:hover {
+  background: var(--bg-sunken);
+  color: var(--ink);
 }
 
 .modal-box iframe {

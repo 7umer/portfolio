@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Download } from "lucide-react";
+import { X, Download, ExternalLink } from "lucide-react";
+import { site } from "../content";
 
 function ResumeModal({ open, onClose }) {
   const boxRef = useRef(null);
@@ -62,7 +63,7 @@ function ResumeModal({ open, onClose }) {
             ref={boxRef}
             role="dialog"
             aria-modal="true"
-            aria-label="Resume — Mohammed Talha Umer Badal"
+            aria-label={`Resume — ${site.name}`}
             initial={{ opacity: 0, y: 30, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.97 }}
@@ -70,17 +71,26 @@ function ResumeModal({ open, onClose }) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-head">
-              <span>Resume — Mohammed Talha Umer Badal</span>
+              <span>Resume — {site.name}</span>
               <div className="modal-head-actions">
-                <a href="/resume.pdf" download aria-label="Download resume">
-                  <Download size={18} color="#f8fafc" aria-hidden="true" />
+                <a
+                  href={site.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open resume in a new tab"
+                  title="Open in new tab"
+                >
+                  <ExternalLink size={17} aria-hidden="true" />
+                </a>
+                <a href={site.resume} download aria-label="Download resume" title="Download">
+                  <Download size={18} aria-hidden="true" />
                 </a>
                 <button ref={closeRef} onClick={onClose} aria-label="Close resume preview">
                   <X size={20} aria-hidden="true" />
                 </button>
               </div>
             </div>
-            <iframe src="/resume.pdf" title="Resume preview" />
+            <iframe src={site.resume} title="Resume preview" />
           </motion.div>
         </motion.div>
       )}
