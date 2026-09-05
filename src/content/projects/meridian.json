@@ -5,8 +5,13 @@
   "title": "Meridian Estates",
   "tag": "Demo · Luxury Real Estate",
   "year": "2025",
-  "desc": "Ultra-prime real estate website with animated property showcases, a 3D tower explorer, interactive market map, mortgage calculator, and cinematic scroll effects.",
-  "stack": ["Next.js", "Three.js", "GSAP", "Tailwind CSS"],
+  "desc": "Ultra-prime property showcase built to make listings feel like an experience — a 3D tower explorer, interactive market map and mortgage calculator, wrapped in cinematic scroll.",
+  "stack": [
+    "Next.js",
+    "Three.js",
+    "GSAP",
+    "Tailwind CSS"
+  ],
   "url": "https://real-estate-psi-mauve.vercel.app",
   "image": "/images/projects/meridian.webp"
 }

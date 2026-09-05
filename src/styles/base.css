@@ -237,9 +237,12 @@ h5 {
 }
 
 .display-2 {
-  font-size: clamp(2.1rem, 5.4vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.032em;
+  /* Bold, to match the hero headline — a 500-weight section heading next
+     to a 700-weight hero read as two different typographic systems. */
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .display-3 {

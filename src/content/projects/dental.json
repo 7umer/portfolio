@@ -2,14 +2,14 @@
   "order": 6,
   "featured": false,
   "track": "designer",
-  "title": "Dental Clinic Demo",
-  "tag": "Demo · Healthcare",
+  "title": "BrightCare Clinic",
+  "tag": "Healthcare · Dental",
   "year": "2025",
-  "desc": "Clean, trust-led dental clinic website showcasing services, doctor profiles, appointment booking CTA, and patient testimonials. Ready to white-label.",
+  "desc": "Dental clinic site built to turn nervous first-timers into booked appointments — calm, trust-led design with doctor credentials, treatment clarity and a booking CTA that follows you down the page.",
   "stack": [
     "React",
     "Tailwind CSS"
   ],
-  "url": "https://brightcare-clinic.vercel.app",
+  "url": "https://demo-dental-web.vercel.app",
   "image": "/images/projects/dental.webp"
 }

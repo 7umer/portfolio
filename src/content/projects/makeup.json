@@ -5,8 +5,12 @@
   "title": "Aanya Kapoor Makeup Artistry",
   "tag": "Client Website · Beauty",
   "year": "2025",
-  "desc": "Elegant portfolio site for a luxury bridal and editorial makeup artist — service listings, portfolio gallery, testimonials, pricing, and booking flow.",
-  "stack": ["HTML", "CSS", "JavaScript"],
+  "desc": "Portfolio and booking site for a bridal and editorial makeup artist, where the gallery does the selling and pricing plus testimonials remove the hesitation before enquiry.",
+  "stack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
   "url": "https://makeup-artists-self.vercel.app",
   "image": "/images/projects/makeup.webp"
 }

@@ -2,11 +2,14 @@
   "order": 7,
   "featured": false,
   "track": "designer",
-  "title": "Skin Clinic Demo",
-  "tag": "Demo · Healthcare",
+  "title": "DermaCare Clinic",
+  "tag": "Healthcare · Dermatology",
   "year": "2025",
-  "desc": "Dermatology clinic website with a premium light aesthetic — treatment listings, before/after showcase section, and WhatsApp-integrated contact form.",
-  "stack": ["React", "Tailwind CSS"],
+  "desc": "Skin and hair clinic site for a treatment-led practice. Laser, acne, anti-ageing and peels are split into scannable services so patients self-qualify before they ever call.",
+  "stack": [
+    "React",
+    "Tailwind CSS"
+  ],
   "url": "https://skin-clinic-demo.vercel.app",
   "image": "/images/projects/skin.webp"
 }

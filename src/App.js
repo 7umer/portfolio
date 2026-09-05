@@ -19,6 +19,8 @@ import CommandPalette from "./components/CommandPalette";
 import ResumeModal from "./components/ResumeModal";
 import BackToTop from "./components/BackToTop";
 
+import { Analytics } from "@vercel/analytics/react";
+
 import useTheme from "./hooks/useTheme";
 import "./styles/base.css";
 import "./styles/components.css";
@@ -92,6 +94,10 @@ function App() {
         onClose={closeSearch}
       />
       <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
+
+      {/* Anonymous, cookie-less traffic stats. Reports to Vercel only when
+          deployed there; a no-op during local development. */}
+      <Analytics />
     </>
   );
 }

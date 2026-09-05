@@ -632,9 +632,10 @@
 
 .proj-grid {
   display: grid;
-  /* Smaller cards, more columns on wide screens — was 380px min, which
-     left only 2 (very wide) columns even at desktop widths. */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  /* auto-fill, not auto-fit: auto-fit collapses the empty tracks, which
+     made a single-project track (Developer) stretch one card across the
+     whole row. auto-fill keeps the tracks, so one card stays card-sized. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: clamp(1rem, 2.2vw, 1.5rem);
 }
 

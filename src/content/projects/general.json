@@ -2,11 +2,14 @@
   "order": 8,
   "featured": false,
   "track": "designer",
-  "title": "General Clinic Demo",
-  "tag": "Demo · Healthcare",
+  "title": "CarePlus Clinic",
+  "tag": "Healthcare · Family Practice",
   "year": "2025",
-  "desc": "General practice clinic template with doctor availability display, service categories, patient FAQ, and a fully responsive mobile layout.",
-  "stack": ["React", "Tailwind CSS"],
+  "desc": "Family practice site covering everything from routine checkups to chronic diabetes and blood-pressure care, structured so patients of any age find the right service fast.",
+  "stack": [
+    "React",
+    "Tailwind CSS"
+  ],
   "url": "https://gen-clinic-demo.vercel.app",
   "image": "/images/projects/general.webp"
 }

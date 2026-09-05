@@ -5,8 +5,12 @@
   "title": "QuickMart",
   "tag": "Startup · Hyperlocal Delivery",
   "year": "2025",
-  "desc": "10–15 minute grocery delivery platform connecting customers with trusted local stores in Gulbarga. WhatsApp-based ordering, rider recruitment, zero hidden fees.",
-  "stack": ["HTML", "CSS", "JavaScript"],
+  "desc": "10–15 minute grocery delivery for Gulbarga, ordering straight through WhatsApp so there is no app to install — plus rider recruitment and a no-hidden-fees promise.",
+  "stack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
   "url": "https://quikmart.vercel.app",
   "image": "/images/projects/quickmart.webp"
 }
