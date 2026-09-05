@@ -1,0 +1,12 @@
+{
+  "order": 7,
+  "featured": false,
+  "track": "designer",
+  "title": "Skin Clinic Demo",
+  "tag": "Demo · Healthcare",
+  "year": "2025",
+  "desc": "Dermatology clinic website with a premium light aesthetic — treatment listings, before/after showcase section, and WhatsApp-integrated contact form.",
+  "stack": ["React", "Tailwind CSS"],
+  "url": "https://skin-clinic-demo.vercel.app",
+  "image": "/images/projects/skin.webp"
+}

@@ -1,0 +1,12 @@
+{
+  "order": 6,
+  "featured": false,
+  "track": "designer",
+  "title": "Dental Clinic Demo",
+  "tag": "Demo · Healthcare",
+  "year": "2025",
+  "desc": "Clean, trust-led dental clinic website showcasing services, doctor profiles, appointment booking CTA, and patient testimonials. Ready to white-label.",
+  "stack": ["React", "Tailwind CSS"],
+  "url": "https://demo-dental-web.vercel.app",
+  "image": "/images/projects/dental.webp"
+}

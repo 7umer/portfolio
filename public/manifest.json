@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Umer Badal",
+  "name": "Umer Badal — Full Stack Developer & UI/UX Designer",
+  "description": "Portfolio of Mohammed Talha Umer Badal — full stack developer, UI/UX designer and founder of UM Web Solutions.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#070b14",
+  "background_color": "#070b14"
 }

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Globe } from "lucide-react";
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { Globe, Mail, Phone, ArrowUpRight } from "lucide-react";
+import { site } from "../content";
 
-function FloatingField({ label, type, name, value, onChange, textarea }) {
+function Field({ label, type = "text", name, value, onChange, textarea }) {
   const Tag = textarea ? "textarea" : "input";
+  const id = `field-${name}`;
+
   return (
-    <div className="floating-field">
+    <div className="field">
       <Tag
-        type={type}
+        id={id}
+        type={textarea ? undefined : type}
         name={name}
         value={value}
         onChange={onChange}
@@ -16,7 +19,7 @@ function FloatingField({ label, type, name, value, onChange, textarea }) {
         required
         rows={textarea ? 5 : undefined}
       />
-      <label>{label}</label>
+      <label htmlFor={id}>{label}</label>
     </div>
   );
 }
@@ -25,26 +28,26 @@ function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
 
-    const payload = {
-      access_key: process.env.REACT_APP_WEB3FORMS_KEY,
-      ...formData,
-    };
-
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          access_key: process.env.REACT_APP_WEB3FORMS_KEY,
+          subject: `Portfolio enquiry from ${formData.name}`,
+          ...formData,
+        }),
       });
+
       const result = await response.json();
+
       if (result.success) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
@@ -57,83 +60,103 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="section contact-premium">
-      <span className="section-eyebrow">Get In Touch</span>
-      <h2 className="section-title">Let's Build Something Amazing Together</h2>
+    <section id="contact" className="section panel">
+      <div className="container">
+        <div className="section-head">
+          <span className="eyebrow">Contact</span>
+          <h2 className="display-2">{site.cta.heading}</h2>
+        </div>
 
-      <div className="contact-card contact-grid">
-        <motion.div
-          className="contact-info-premium"
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <a href="mailto:umerbadal@gmail.com" className="contact-link">
-            <Mail size={18} /> umerbadal@gmail.com
-          </a>
-          <a href="tel:+919035477754" className="contact-link">
-            <Phone size={18} /> +91 90354 77754
-          </a>
-          <a
-            href="https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-link"
+        <div className="contact-grid">
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            <FaLinkedin size={18} /> LinkedIn
-          </a>
-          <a
-            href="https://github.com/7umer"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-link"
-          >
-            <FaGithub size={18} /> GitHub
-          </a>
-          <a
-            href="https://www.instagram.com/um_web_solutions"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-link"
-          >
-            <FaInstagram size={18} /> Instagram
-          </a>
-          <a
-            href="https://umwebsolutions.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-link"
-          >
-            <Globe size={18} /> umwebsolutions.com
-          </a>
-        </motion.div>
+            <p className="lead">{site.cta.body}</p>
 
-        <motion.form
-          className="contact-form-premium"
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <FloatingField label="Your Name" type="text" name="name" value={formData.name} onChange={handleChange} />
-          <FloatingField label="Your Email" type="email" name="email" value={formData.email} onChange={handleChange} />
-          <FloatingField label="Your Message" name="message" value={formData.message} onChange={handleChange} textarea />
+            <div className="contact-links">
+              <a href={`mailto:${site.email}`} className="contact-link">
+                <Mail size={17} aria-hidden="true" /> {site.email}
+              </a>
+              <a href={site.phoneHref} className="contact-link">
+                <Phone size={17} aria-hidden="true" /> {site.phone}
+              </a>
+              {site.socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                >
+                  <ArrowUpRight size={17} aria-hidden="true" /> {social.label}
+                </a>
+              ))}
+              <a
+                href={site.company.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-link"
+              >
+                <Globe size={17} aria-hidden="true" />{" "}
+                {site.company.url.replace(/^https?:\/\//, "")}
+              </a>
+            </div>
+          </motion.div>
 
-          <motion.button
-            type="submit"
-            className="btn-gradient"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            disabled={status === "sending"}
+          <motion.form
+            className="form-grid"
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {status === "sending" ? "Sending..." : "Send Message"}
-          </motion.button>
+            <Field
+              label="Your name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <Field
+              label="Your email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <Field
+              label="What are you building?"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              textarea
+            />
 
-          {status === "success" && <p className="form-status success">Message sent successfully 🚀</p>}
-          {status === "error" && <p className="form-status error">Something went wrong — try again.</p>}
-        </motion.form>
+            <button
+              type="submit"
+              className="btn btn--accent"
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? "Sending…" : "Send message"}
+            </button>
+
+            <p className="form-status" role="status" aria-live="polite">
+              {status === "success" && (
+                <span className="is-ok">
+                  Message sent — I'll reply within a day.
+                </span>
+              )}
+              {status === "error" && (
+                <span className="is-err">
+                  Something went wrong. Email me directly at {site.email}.
+                </span>
+              )}
+            </p>
+          </motion.form>
+        </div>
       </div>
     </section>
   );

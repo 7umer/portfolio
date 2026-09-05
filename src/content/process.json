@@ -1,0 +1,22 @@
+{
+  "steps": [
+    { "title": "Discovery", "desc": "Understand the business, the buyer, and what success actually means." },
+    { "title": "Research", "desc": "Study competitors and the market so the work is grounded, not guessed." },
+    { "title": "Wireframing", "desc": "Structure before styling — every page earns its layout." },
+    { "title": "UI Design", "desc": "High-fidelity design that looks premium and stays on brand." },
+    { "title": "Development", "desc": "Clean, scalable code built on modern, well-supported stacks." },
+    { "title": "Testing", "desc": "Real devices, real browsers, real edge cases." },
+    { "title": "Deployment", "desc": "Shipped, monitored, and measured from day one." },
+    { "title": "Support", "desc": "I stay available after launch — you are not handed a zip file." }
+  ],
+  "reasons": [
+    { "icon": "Zap", "title": "Fast delivery" },
+    { "icon": "Sparkles", "title": "Modern UI" },
+    { "icon": "Search", "title": "SEO friendly" },
+    { "icon": "Smartphone", "title": "Responsive" },
+    { "icon": "Target", "title": "Business focused" },
+    { "icon": "Gem", "title": "Premium design" },
+    { "icon": "Layers", "title": "Scalable code" },
+    { "icon": "Wallet", "title": "Affordable" }
+  ]
+}

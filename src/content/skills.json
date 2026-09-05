@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "title": "Frontend",
+      "skills": ["React", "Next.js", "HTML", "CSS", "JavaScript", "Tailwind CSS", "Framer Motion", "GSAP"]
+    },
+    {
+      "title": "Backend",
+      "skills": ["Python", "Django", "REST APIs", "PostgreSQL", "Supabase", "Database Design"]
+    },
+    {
+      "title": "Tools",
+      "skills": ["Git", "GitHub", "Vercel", "Figma", "VS Code", "Hostinger"]
+    },
+    {
+      "title": "Soft Skills",
+      "skills": ["Problem Solving", "Communication", "UI Thinking", "Business Thinking", "Freelancing"]
+    }
+  ]
+}

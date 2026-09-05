@@ -1,54 +1,59 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { site } from "../content";
 
 const QUICK_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
+  { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Process", href: "#process" },
+  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 
 function Footer() {
   return (
-    <footer className="footer footer-premium">
-      <motion.h2
-        className="footer-logo"
-        whileHover={{ scale: 1.05 }}
-      >
-        <a href="#home">Umer.</a>
-      </motion.h2>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-top">
+          <a href="#home" className="footer-word">
+            {site.logo}
+          </a>
 
-      <ul className="footer-links">
-        {QUICK_LINKS.map((l) => (
-          <li key={l.label}>
-            <a href={l.href}>{l.label}</a>
-          </li>
-        ))}
-      </ul>
+          <div style={{ display: "grid", gap: "1.5rem" }}>
+            <nav aria-label="Footer">
+              <ul className="footer-nav">
+                {QUICK_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-      <div className="socials">
-        <a href="https://github.com/7umer" target="_blank" rel="noreferrer">
-          <FaGithub />
-        </a>
-        <a
-          href="https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FaLinkedin />
-        </a>
-        <a
-          href="https://instagram.com/um_web_solutions"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FaInstagram />
-        </a>
+            <div className="footer-socials">
+              {site.socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {social.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>
+            © {new Date().getFullYear()} {site.shortName}. All rights reserved.
+          </p>
+          <p>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
+        </div>
       </div>
-
-      <p>© 2026 Umer. All rights reserved.</p>
     </footer>
   );
 }

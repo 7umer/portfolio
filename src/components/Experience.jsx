@@ -1,58 +1,71 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-const EXPERIENCE = [
-  {
-    role: "Founder",
-    org: "UM Web Solutions",
-    period: "Present",
-    desc: "Running an MSME-registered web agency building sites and SaaS products for local and international clients.",
-  },
-  {
-    role: "Full Stack / Python Developer",
-    org: "Freelance",
-    period: "Present",
-    desc: "Building Django + React web applications and SaaS products end to end — backend, frontend, and deployment.",
-  },
-  {
-    role: "UI/UX Designer",
-    org: "Freelance",
-    period: "Present",
-    desc: "Designing premium, conversion-focused interfaces for startups, clinics, and real estate brands.",
-  },
-  {
-    role: "Freelancer",
-    org: "Fiverr & Direct Outreach",
-    period: "Ongoing",
-    desc: "Delivering web design and development projects for clients across India and the US.",
-  },
-];
+import { experience, skills } from "../content";
 
 function Experience() {
   return (
-    <section id="experience" className="section experience-premium">
-      <span className="section-eyebrow">Where I've Been</span>
-      <h2 className="section-title">Experience</h2>
+    <section id="experience" className="section">
+      <div className="container">
+        <div className="section-head">
+          <span className="eyebrow">Experience</span>
+          <h2 className="display-2">Where I've been</h2>
+        </div>
 
-      <div className="timeline">
-        {EXPERIENCE.map((exp, i) => (
-          <motion.div
-            className="timeline-row"
-            key={exp.role + exp.org}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="timeline-dot" />
-            <div className="timeline-content">
-              <span className="timeline-period">{exp.period}</span>
-              <h3>{exp.role}</h3>
-              <p className="timeline-org">{exp.org}</p>
+        <div className="exp-list">
+          {experience.items.map((exp, i) => (
+            <motion.div
+              className="exp-row"
+              key={`${exp.role}-${exp.org}`}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+            >
+              <span className="exp-period">{exp.period}</span>
+              <div>
+                <h3>{exp.role}</h3>
+                <p className="exp-org">{exp.org}</p>
+              </div>
               <p>{exp.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Skills() {
+  return (
+    <section id="skills" className="section">
+      <div className="container">
+        <div className="section-head">
+          <span className="eyebrow">Toolkit</span>
+          <h2 className="display-2">What I work with</h2>
+        </div>
+
+        <div className="exp-list">
+          {skills.categories.map((cat, i) => (
+            <motion.div
+              className="exp-row"
+              key={cat.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              style={{ gridTemplateColumns: "10rem minmax(0, 1fr)" }}
+            >
+              <span className="exp-period">{cat.title}</span>
+              <div className="tag-row" style={{ marginBottom: 0 }}>
+                {cat.skills.map((skill) => (
+                  <span className="chip" key={skill}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

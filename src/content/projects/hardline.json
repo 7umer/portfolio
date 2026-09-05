@@ -1,0 +1,12 @@
+{
+  "order": 3,
+  "featured": true,
+  "track": "designer",
+  "title": "Hardline Gym",
+  "tag": "Client Website · Fitness",
+  "year": "2025",
+  "desc": "Premium gym website with membership plans, trainer profiles, class schedules, and a bold editorial aesthetic built to convert walk-in visitors.",
+  "stack": ["React", "Tailwind CSS"],
+  "url": "https://hardline-phi.vercel.app",
+  "image": "/images/projects/hardline.webp"
+}

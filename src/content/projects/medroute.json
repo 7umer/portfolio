@@ -1,0 +1,12 @@
+{
+  "order": 1,
+  "featured": true,
+  "track": "developer",
+  "title": "MedRoute",
+  "tag": "SaaS · Pharma CRM",
+  "year": "2025",
+  "desc": "Smart visit management platform for medical representatives — doctor routing, visit logs, sampling, and analytics. Full production deployment with mobile app.",
+  "stack": ["React", "Django", "PostgreSQL", "Supabase", "Razorpay"],
+  "url": "https://med-route-snowy.vercel.app",
+  "image": "/images/projects/medroute.webp"
+}

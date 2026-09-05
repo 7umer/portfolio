@@ -1,0 +1,12 @@
+{
+  "order": 8,
+  "featured": false,
+  "track": "designer",
+  "title": "General Clinic Demo",
+  "tag": "Demo · Healthcare",
+  "year": "2025",
+  "desc": "General practice clinic template with doctor availability display, service categories, patient FAQ, and a fully responsive mobile layout.",
+  "stack": ["React", "Tailwind CSS"],
+  "url": "https://gen-clinic-demo.vercel.app",
+  "image": "/images/projects/general.webp"
+}

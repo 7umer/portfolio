@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "role": "Founder",
+      "org": "UM Web Solutions",
+      "period": "Present",
+      "desc": "Running an MSME-registered web agency building sites and SaaS products for local and international clients."
+    },
+    {
+      "role": "Full Stack / Python Developer",
+      "org": "Freelance",
+      "period": "Present",
+      "desc": "Building Django + React web applications and SaaS products end to end — backend, frontend, and deployment."
+    },
+    {
+      "role": "UI/UX Designer",
+      "org": "Freelance",
+      "period": "Present",
+      "desc": "Designing premium, conversion-focused interfaces for startups, clinics, and real estate brands."
+    },
+    {
+      "role": "Freelancer",
+      "org": "Fiverr & Direct Outreach",
+      "period": "Ongoing",
+      "desc": "Delivering web design and development projects for clients across India and the US."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { site } from "../content";
 
 function Loader({ onDone }) {
   const [progress, setProgress] = useState(0);
@@ -8,17 +9,18 @@ function Loader({ onDone }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((p) => {
-        const next = Math.min(p + Math.random() * 18, 100);
+        const next = Math.min(p + Math.random() * 22, 100);
         if (next >= 100) {
           clearInterval(interval);
           setTimeout(() => {
             setVisible(false);
-            onDone && onDone();
-          }, 300);
+            onDone?.();
+          }, 250);
         }
         return next;
       });
-    }, 140);
+    }, 120);
+
     return () => clearInterval(interval);
   }, [onDone]);
 
@@ -26,23 +28,23 @@ function Loader({ onDone }) {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="loader-screen"
-          exit={{ opacity: 0, filter: "blur(10px)" }}
-          transition={{ duration: 0.5 }}
+          className="loader"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.45 }}
+          role="status"
+          aria-label="Loading"
         >
           <motion.div
-            className="loader-logo"
-            initial={{ opacity: 0, y: 10 }}
+            className="loader-word"
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            Umer.
+            {site.logo}
           </motion.div>
+
           <div className="loader-bar">
-            <div
-              className="loader-bar-fill"
-              style={{ width: `${progress}%`, transition: "width 0.15s ease" }}
-            />
+            <i style={{ width: `${progress}%`, transition: "width 0.15s ease" }} />
           </div>
         </motion.div>
       )}

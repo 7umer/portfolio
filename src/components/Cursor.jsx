@@ -11,6 +11,11 @@ function Cursor() {
   useEffect(() => {
     if (window.matchMedia("(hover: none)").matches) return;
 
+    // Only hide the native cursor once we are actually drawing a replacement.
+    // Hiding it from CSS alone leaves visitors with no cursor at all if this
+    // effect never runs.
+    document.documentElement.classList.add("has-custom-cursor");
+
     const move = (e) => {
       pos.current = { x: e.clientX, y: e.clientY };
       if (dotRef.current) {
@@ -20,13 +25,13 @@ function Cursor() {
     };
 
     const onOver = (e) => {
-      if (e.target.closest("a, button, .about-card, .proj-card")) {
-        ringRef.current?.classList.add("hovered");
+      if (e.target.closest("a, button, input, textarea, .proj-card, .why-card, .service-row")) {
+        ringRef.current?.classList.add("is-hovered");
       }
     };
     const onOut = (e) => {
-      if (e.target.closest("a, button, .about-card, .proj-card")) {
-        ringRef.current?.classList.remove("hovered");
+      if (e.target.closest("a, button, input, textarea, .proj-card, .why-card, .service-row")) {
+        ringRef.current?.classList.remove("is-hovered");
       }
     };
 
@@ -47,6 +52,7 @@ function Cursor() {
     animate();
 
     return () => {
+      document.documentElement.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", move);
       document.removeEventListener("mouseover", onOver);
       document.removeEventListener("mouseout", onOut);

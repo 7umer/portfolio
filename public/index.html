@@ -3,13 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mohammed Talha Umer Badal — Full Stack Developer, UI/UX Designer & SaaS Builder. Founder of UM Web Solutions." />
+  <meta name="theme-color" content="#ffffff" />
+
   <title>Umer Badal | Full Stack Developer & UI/UX Designer</title>
+  <meta name="description" content="Mohammed Talha Umer Badal — Full Stack Developer, UI/UX Designer & SaaS Builder. Founder of UM Web Solutions, building premium websites and products for startups, clinics and local businesses." />
+  <meta name="author" content="Mohammed Talha Umer Badal" />
+  <link rel="canonical" href="https://umer-badal-portfolio.vercel.app/" />
+
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Open Graph — link previews on LinkedIn, WhatsApp, Slack, Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Umer Badal" />
+  <meta property="og:url" content="https://umer-badal-portfolio.vercel.app/" />
+  <meta property="og:title" content="Umer Badal | Full Stack Developer & UI/UX Designer" />
+  <meta property="og:description" content="I design and build premium websites and SaaS products for startups, clinics, real estate brands and local businesses." />
+  <meta property="og:image" content="https://umer-badal-portfolio.vercel.app/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Mohammed Talha Umer Badal — Full Stack Developer & UI/UX Designer" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Umer Badal | Full Stack Developer & UI/UX Designer" />
+  <meta name="twitter:description" content="I design and build premium websites and SaaS products for startups, clinics, real estate brands and local businesses." />
+  <meta name="twitter:image" content="https://umer-badal-portfolio.vercel.app/og-image.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohammed Talha Umer Badal",
+    "alternateName": "Umer Badal",
+    "url": "https://umer-badal-portfolio.vercel.app/",
+    "image": "https://umer-badal-portfolio.vercel.app/og-image.jpg",
+    "jobTitle": "Full Stack Developer & UI/UX Designer",
+    "email": "umerbadal@gmail.com",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "UM Web Solutions",
+      "url": "https://umwebsolutions.com"
+    },
+    "sameAs": [
+      "https://github.com/7umer",
+      "https://linkedin.com/in/mohammed-talha-umer-badal-9910b7242",
+      "https://www.instagram.com/um_web_solutions"
+    ]
+  }
+  </script>
 </head>
 <body>
+  <script>
+    // Apply the saved (or OS) theme before first paint so there is no
+    // light-to-dark flash. useTheme.js takes over once React mounts.
+    (function () {
+      try {
+        var saved = localStorage.getItem("umer-theme");
+        var dark = saved
+          ? saved === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.content = dark ? "#080808" : "#ffffff";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+
+  <noscript>You need to enable JavaScript to view this portfolio.</noscript>
   <div id="root"></div>
 </body>
 </html>

@@ -1,0 +1,15 @@
+{
+  "items": [
+    { "icon": "Palette", "title": "UI/UX Design", "desc": "Interfaces that look premium and convert." },
+    { "icon": "Code2", "title": "Website Development", "desc": "Fast, scalable builds on modern stacks." },
+    { "icon": "LayoutTemplate", "title": "Landing Pages", "desc": "High-converting pages for campaigns and launches." },
+    { "icon": "Building2", "title": "Business Websites", "desc": "Professional sites that build trust fast." },
+    { "icon": "Stethoscope", "title": "Clinic Websites", "desc": "Patient-friendly sites for healthcare providers." },
+    { "icon": "Home", "title": "Real Estate Websites", "desc": "Immersive listing and showcase experiences." },
+    { "icon": "Rocket", "title": "Startup MVP", "desc": "Ship a working product fast, without cutting corners." },
+    { "icon": "Server", "title": "SaaS Development", "desc": "Full-stack SaaS from idea to production." },
+    { "icon": "LayoutDashboard", "title": "Dashboard Design", "desc": "Clear, data-dense interfaces that stay usable." },
+    { "icon": "Smartphone", "title": "Responsive Design", "desc": "Every screen size, pixel-perfect." },
+    { "icon": "Gauge", "title": "Performance Optimization", "desc": "Faster loads, better Core Web Vitals, happier users." }
+  ]
+}

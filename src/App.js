@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Services from "./components/Services";
+import Marquee from "./components/Marquee";
+import About, { Stats } from "./components/About";
 import Projects from "./components/Projects";
-import Workflow from "./components/Workflow";
-import Experience from "./components/Experience";
+import Services from "./components/Services";
+import Process, { Reasons } from "./components/Process";
+import Experience, { Skills } from "./components/Experience";
 import Testimonials from "./components/Testimonials";
-import WhyWorkWithMe from "./components/WhyWorkWithMe";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+
 import Loader from "./components/Loader";
 import Cursor from "./components/Cursor";
 import SmoothScroll from "./components/SmoothScroll";
@@ -19,36 +20,62 @@ import CommandPalette from "./components/CommandPalette";
 import ResumeModal from "./components/ResumeModal";
 import BackToTop from "./components/BackToTop";
 
+import useTheme from "./hooks/useTheme";
+import "./styles/base.css";
+import "./styles/components.css";
+
 function App() {
+  const { theme, toggle } = useTheme();
+
   const [loading, setLoading] = useState(true);
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  const openResume = useCallback(() => setResumeOpen(true), []);
+  const openSearch = useCallback(() => setSearchOpen(true), []);
+  const closeSearch = useCallback(() => setSearchOpen(false), []);
 
   return (
     <>
       {loading && <Loader onDone={() => setLoading(false)} />}
 
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+
       <Cursor />
       <SmoothScroll />
       <ScrollProgress />
 
-      <div className="cmdk-hint-wrapper">
-        <CommandPalette />
-      </div>
+      <Navbar
+        theme={theme}
+        onToggleTheme={toggle}
+        onOpenSearch={openSearch}
+      />
 
-      <Navbar />
-      <Hero onViewResume={() => setResumeOpen(true)} />
-      <About onViewResume={() => setResumeOpen(true)} />
-      <Skills />
-      <Services />
-      <Projects />
-      <Workflow />
-      <Experience />
-      <Testimonials />
-      <WhyWorkWithMe />
-      <Contact />
+      <main id="main">
+        <Hero onViewResume={openResume} />
+        <Marquee />
+        <Stats />
+        <Projects />
+        <Services />
+        <About onViewResume={openResume} />
+        <Process />
+        <Skills />
+        <Experience />
+        <Reasons />
+        <Testimonials />
+        <Contact />
+      </main>
+
       <Footer />
 
       <BackToTop />
+      <CommandPalette
+        open={searchOpen}
+        onOpen={openSearch}
+        onClose={closeSearch}
+      />
       <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </>
   );
