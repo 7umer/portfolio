@@ -637,7 +637,11 @@
 
 .proj-thumb {
   position: relative;
-  aspect-ratio: 16 / 10;
+  /* Screenshots run ~2:1 (browser chrome cropped, no tall content). This
+     box matches that so object-fit: contain shows the whole screenshot
+     with next to no letterboxing, instead of the old 16:10 crop that cut
+     off the top of every image. */
+  aspect-ratio: 2 / 1;
   overflow: hidden;
   background: var(--bg-sunken);
   border-bottom: 1px solid var(--line);
@@ -646,9 +650,9 @@
 .proj-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.7s var(--ease);
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.5s var(--ease);
 }
 
 .proj-card:hover .proj-thumb img {
