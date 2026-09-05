@@ -108,13 +108,15 @@ function About({ onViewResume }) {
             </div>
 
             <div className="hero-cta">
-              <button
-                type="button"
+              <a
+                href={site.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn--primary"
                 onClick={onViewResume}
               >
                 <Eye size={16} aria-hidden="true" /> View resume
-              </button>
+              </a>
               <a href={site.resume} download className="btn btn--ghost">
                 <Download size={16} aria-hidden="true" /> Download resume
               </a>

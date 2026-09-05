@@ -20,7 +20,6 @@ import ResumeModal from "./components/ResumeModal";
 import BackToTop from "./components/BackToTop";
 
 import useTheme from "./hooks/useTheme";
-import { site } from "./content";
 import "./styles/base.css";
 import "./styles/components.css";
 
@@ -31,19 +30,22 @@ function App() {
   const [resumeOpen, setResumeOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  // Mobile browsers refuse to render a PDF inside an iframe — the preview
-  // modal just shows an empty frame there. On touch/small screens, hand the
-  // file to the browser's own PDF handling instead of previewing it inline.
-  const openResume = useCallback(() => {
-    const cannotPreviewInline =
-      window.matchMedia("(hover: none), (max-width: 900px)").matches ||
-      navigator.pdfViewerEnabled === false;
+  // The "view resume" controls are real links to the PDF. On desktop we
+  // swallow the click and show the inline preview instead; everywhere else
+  // the link is left alone to navigate natively.
+  //
+  // This has to be a link rather than a button calling window.open: mobile
+  // Safari treats a scripted window.open — especially one passing window
+  // features — as a popup and blocks it, so the tap did nothing at all.
+  // A genuine anchor navigation is never popup-blocked.
+  const openResume = useCallback((event) => {
+    const canPreviewInline =
+      !window.matchMedia("(hover: none), (max-width: 900px)").matches &&
+      navigator.pdfViewerEnabled !== false;
 
-    if (cannotPreviewInline) {
-      window.open(site.resume, "_blank", "noopener,noreferrer");
-      return;
-    }
+    if (!canPreviewInline) return;
 
+    event.preventDefault();
     setResumeOpen(true);
   }, []);
   const openSearch = useCallback(() => setSearchOpen(true), []);
